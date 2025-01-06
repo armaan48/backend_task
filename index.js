@@ -85,7 +85,8 @@ app.post("/identify", async (req, res) => {
         finalContacts.forEach((contact) => {
             emails.add(contact.email);
             phoneNumbers.add(contact.phoneNumber);
-            secondaryContactIds.push(contact.id);
+            if (contact.id != primaryContactId)
+                secondaryContactIds.push(contact.id);
         });
 
         await client.query("COMMIT");
