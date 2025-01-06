@@ -51,7 +51,6 @@ app.post("/identify", async (req, res) => {
             [phoneNumber, newEntryId]
         );
 
-        console.log("New Entry : ", newEntryId);
         if (emailMatches.length) {
             console.log(`Email merge => ${emailMatches[0].email}`);
             await client.query("SELECT union_contacts_optimized($1, $2)", [
